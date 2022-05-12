@@ -1,7 +1,8 @@
 # Contrastive_for_ADNI
 
 To Run Autoencoder model
-python run_ae.py --config {your config file}
+
+- python run_ae.py --config {your config file}
 
 To Run SimCLR model
 - Pretraining
