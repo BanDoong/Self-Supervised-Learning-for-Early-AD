@@ -1,0 +1,66 @@
+# distributed training
+nodes: 1
+gpus: 1 # I recommend always assigning 1 GPU to 1 node
+nr: 0 # machine nr. in node (0 -- nodes - 1)
+dataparallel: 0 # Use DataParallel instead of DistributedDataParallel
+workers: 12
+dataset_dir: "./datasets"
+
+# Data option
+modality: mri
+ad: True
+mci: True
+trans_tau: False
+stable: True
+dir_label: '../getlabels'
+num_label: 2
+free: '_coreg' # '_coreg' if Data_free
+resize: False
+dir_data: '../caps/subjects'
+transform: True
+flip: True
+local_shuffle_pixel: True
+non_inear_ransformation: True
+in_painting: True
+out_painting: True
+clinica: True
+save_samples: False
+
+# train options
+seed: 42 # sacred handles automatic seeding when passed in the config
+batch_size: 64
+image_size: (128,128,128)
+start_epoch: 0
+epochs: 1000
+finetune: False
+scheduler: False
+#dataset: "CIFAR10" # STL10
+#pretrain: True
+
+# model options
+model: resnet
+resnet_depth: 18
+projection_dim: 64 # "[...] to project the representation to a 128-dimensional latent space"
+
+# loss options
+optimizer: "LARS" # or LARS (experimental)
+weight_decay: 1.0e-6 # "optimized using LARS [...] and weight decay of 10−6"
+temperature: 0.07 # see appendix B.7.: Optimal temperature under different batch sizes
+
+# reload options
+model_path: "resnet_18" # set to the directory containing `checkpoint_##.tar`
+epoch_num: 1000 # set to checkpoint number
+reload: False
+
+# logistic regression options
+logistic_batch_size: 256
+logistic_epochs: 500
+
+# Image transformation
+
+nonlinear_rate: 0.9
+paint_rate: 0.9
+outpaint_rate: 0.8
+inpaint_rate: 0.2 #1.0- outpaint_rate
+local_rate: 0.5
+flip_rate: 0.4

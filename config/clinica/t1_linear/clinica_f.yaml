@@ -1,0 +1,45 @@
+# distributed training
+nodes: 1
+gpus: 1 # I recommend always assigning 1 GPU to 1 node
+nr: 0 # machine nr. in node (0 -- nodes - 1)
+dataparallel: 0 # Use DataParallel instead of DistributedDataParallel
+workers: 12
+
+# Data option
+modality: mri
+ad: False
+mci: True
+trans_tau: False
+stable: False
+dir_label: '../getlabels'
+num_label: 2
+free: '_coreg' # '_coreg' if Data_free
+resize: False
+dir_data: '../caps_new/subjects'
+clinica: True
+transform: False
+save_samples: False
+t1_linear: True
+
+# train options
+seed: 43 # sacred handles automatic seeding when passed in the config
+batch_size: 12
+image_size: (128,128,128)
+start_epoch: 0
+epochs: 50
+finetune: True
+scheduler: False
+dropout: 0.5
+patience: 10
+weight_decay: 0.0
+lr: 1.0e-4
+# model options
+model: autoencoder
+
+# loss options
+optimizer: "adam"
+
+# reload options
+model_path: "autoencoder_t1_linear"
+
+
