@@ -1,0 +1,42 @@
+# network
+model: vit_byol
+model_depth: 18
+mlp_hidden_size: 512
+# projection_size : batch_size * 2
+projection_size: 128
+
+# Dataset
+modality: mri
+ad: False
+mci: True
+trans_tau: False
+stable: False
+dir_label: '../../final_labels/getlabels'
+num_label: 2
+resize: False
+resize64: True
+dir_data: '../../../Data_free'
+clinica: False
+transform: False
+save_samples: False
+t1_linear: False
+finetune: True
+clinica: False
+roi: False
+
+# training parameters
+batch_size: 8
+max_epochs: 2000
+num_workers: 12
+checkpoint_interval: 100
+m: 0.996
+loading_epoch_num: 800
+eval_every_n_epochs: 5
+load_best: True
+#optimizer
+lr: 0.001
+momentum: 0.9
+weight_decay: 0.
+
+#save
+model_path: vit64

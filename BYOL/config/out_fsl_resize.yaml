@@ -1,0 +1,44 @@
+# network
+model: resnet
+model_depth: 18
+mlp_hidden_size: 512
+# projection_size : batch_size * 2
+projection_size: 128
+
+# Dataset
+modality: mri
+ad: False
+mci: True
+trans_tau: False
+stable: False
+#dir_label: '../../final_labels/getlabels'
+dir_label: '/home/id202188508/all/getlabels'
+num_label: 2
+resize: True
+resize64: False
+#dir_data: '../../../Data_free'
+dir_data: '/home/id202188508/all/Data_FSL'
+clinica: False
+transform: False
+save_samples: False
+t1_linear: False
+finetune: True
+roi: False
+crop: True
+# training parameters
+batch_size: 128
+max_epochs: 2000
+num_workers: 12
+checkpoint_interval: 100
+m: 0.996
+loading_epoch_num: 1200
+load_best: True
+eval_every_n_epochs: 10
+
+#optimizer
+lr: 0.3
+momentum: 0.9
+weight_decay: 0.0004
+
+#save
+model_path: fsl_18_resize

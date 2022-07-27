@@ -1,0 +1,40 @@
+# network
+model: resnet
+model_depth: 18
+mlp_hidden_size: 512
+# projection_size : batch_size * 2
+projection_size: 128
+
+# Dataset
+modality: [mri, tau]
+ad: True
+mci: True
+trans_tau: True
+stable: False
+dir_label: '/home/id202188508/all/getlabels'
+num_label: 2
+resize: False
+resize64: False
+dir_data: '/home/id202188508/all/caps/subjects'
+clinica: False
+transform: False
+save_samples: False
+t1_linear: True
+finetune: False
+clinica: False
+roi: False
+
+# training parameters
+batch_size: 64
+max_epochs: 1200
+num_workers: 12
+checkpoint_interval: 200
+m: 0.99
+
+#optimizer
+lr: 0.3
+momentum: 0.9
+weight_decay: 0.0004
+
+#save
+model_path: linear_18
